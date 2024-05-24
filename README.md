@@ -7,12 +7,18 @@ This project is implemented in the C programming language, demonstrating efficie
 
 
 Features
+
 Creature Database: Browse and view detailed information about different creatures.
+
 Battle System: Engage in battles, leveraging strategic moves and tactics.
+
 Command Line Interface: Interact with the game through a user-friendly command line interface.
 
 
 Authors
+
 2702224950 - Alexander Ricky B. 
+
 2702236925 - Grace Birgitta H. 
+
 2702343914 - Rafly Adha Prathama
