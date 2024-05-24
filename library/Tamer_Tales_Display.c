@@ -50,7 +50,7 @@ void menuPokemonNavigation(int nav) {
             break;
         case 2:
             int menu2 = -1;
-            while (menu2 !=  6)
+            while (menu2 !=  4)
             {
                 menu2 = menuViewPokemon();
                 menuViewPokemonNavigation(menu2);
@@ -271,11 +271,11 @@ int viewPokemonGeneration(){
         switch (input) {
             case 'A':
             case 'a':
-                count++;
+                count--;
                 break;
             case 'D':
             case 'd':
-                count--;
+                count++;
                 break;
             case 'B':
             case 'b':
@@ -299,7 +299,7 @@ void viewPokemonGenerationDisplay(int current){
             printf("================================================================\n");
             printf("Main > Pokemon > View Pokedex > View by Generation\n");
             printf("================================================================\n");
-            printf("                         Generation 1 >>                        \n");
+            printf("                     << Generation 1 >>                        \n");
             printf("Press 'a' or 'd' to iterate through generation\n" );
             printf("Press 'b' to back, 'enter' to see the pokedex\n");
             break;
