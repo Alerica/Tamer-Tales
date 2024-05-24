@@ -1,0 +1,31 @@
+21 Mei 2024
+
+[done] Create File Proccessing ( Reading pokemon data from .txt)
+[done] Add pokemon gen 1 to database
+[done] Create View (Display Pokemon) (Displaying all pokemon from .txt)
+[done] Create adjency list function
+[done] Create Tamer Tales Runner
+
+22 Mei 2024
+
+[done] Add searching function (Input name, return index)
+[done] Impove adjency list function (display the list recursively)
+[done] Fix infinite list bug
+
+23 Mei 2024
+
+[done] Add pokemon gen 2 - 9 to database
+[done] Arrrange the file, split database, library and c file
+[done] Change Tamer Tales Runner into Tamer Tales Installer
+[done] Make better interface, now user can`t type manualy for some input
+    - Create seperate file for display
+    - Improve the interface
+    - Improve user validation, now user can only use 'a','w','s','d', or any specificinput
+[done] Improver read function, now it takes parameter
+
+24 Mei 2024
+
+# Create Tamer Tales Respitory in GitHub
+# Upload the project to GitHub
+
+[done] Improve Tamer Tales Display
