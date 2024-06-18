@@ -1,0 +1,121 @@
+Number,Name,Type 1,Type 2,HP,Attack,Defense,Sp.Attack,Sp.Defense,Speed
+906,Sprigatito,Grass,,40,61,54,45,45,65
+907,Floragato,Grass,,61,80,63,60,63,83
+908,Meowscarada,Grass,Dark,76,110,70,81,70,123
+909,Fuecoco,Fire,,67,45,59,63,40,36
+910,Crocalor,Fire,,81,55,78,90,58,49
+911,Skeledirge,Fire,Ghost,104,75,100,110,75,66
+912,Quaxly,Water,,55,65,45,50,45,50
+913,Quaxwell,Water,,70,85,65,65,60,65
+914,Quaquaval,Water,Fighting,85,120,80,85,75,85
+915,Lechonk,Normal,,54,45,40,35,45,35
+916,Oinkologne,Normal,,110,100,75,59,80,65
+917,Tarountula,Bug,,35,41,45,29,40,20
+918,Spidops,Bug,,60,79,92,52,86,35
+919,Nymble,Bug,,33,46,40,21,25,45
+920,Lokix,Bug,Dark,71,102,78,52,55,92
+921,Pawmi,Electric,,45,50,20,40,25,60
+922,Pawmo,Electric,Fighting,60,75,40,50,40,85
+923,Pawmot,Electric,Fighting,70,115,70,70,60,105
+924,Tandemaus,Normal,,50,50,45,40,45,75
+925,Maushold,Normal,,74,75,70,65,75,111
+926,Fidough,Fairy,,37,55,70,30,55,65
+927,Dachsbun,Fairy,,57,80,115,50,80,95
+928,Smoliv,Grass,Normal,41,35,45,58,51,30
+929,Dolliv,Grass,Normal,52,53,60,78,78,33
+930,Arboliva,Grass,Normal,78,69,90,125,109,39
+931,Squawkabilly,Normal,Flying,82,96,51,45,51,92
+932,Nacli,Rock,,55,55,75,35,35,25
+933,Naclstack,Rock,,60,60,100,35,65,35
+934,Garganacl,Rock,,100,100,130,45,90,35
+935,Charcadet,Fire,,40,50,40,50,40,35
+936,Armarouge,Fire,Psychic,85,60,100,125,80,75
+937,Ceruledge,Fire,Ghost,75,125,80,60,100,85
+938,Tadbulb,Electric,,61,31,41,59,35,45
+939,Bellibolt,Electric,,109,64,91,103,83,45
+940,Wattrel,Electric,Flying,40,40,35,55,40,70
+941,Kilowattrel,Electric,Flying,70,70,60,105,60,125
+942,Maschiff,Dark,,60,78,60,40,51,51
+943,Mabosstiff,Dark,,80,120,90,60,70,85
+944,Shroodle,Poison,Normal,40,65,35,40,35,75
+945,Grafaiai,Poison,Normal,63,95,65,80,72,110
+946,Bramblin,Grass,Ghost,40,65,30,45,35,60
+947,Brambleghast,Grass,Ghost,55,115,70,80,70,90
+948,Toedscool,Ground,Grass,40,40,35,50,100,70
+949,Toedscruel,Ground,Grass,80,70,65,80,120,100
+950,Klawf,Rock,,70,100,115,35,55,75
+951,Capsakid,Grass,,50,62,40,62,40,50
+952,Scovillain,Grass,Fire,65,108,65,108,65,75
+953,Rellor,Bug,,41,50,60,31,58,30
+954,Rabsca,Bug,Psychic,75,50,85,115,100,45
+955,Flittle,Psychic,,30,35,30,55,30,75
+956,Espathra,Psychic,,95,60,60,101,60,105
+957,Tinkatink,Fairy,Steel,50,45,45,35,64,58
+958,Tinkatuff,Fairy,Steel,65,55,55,45,82,78
+959,Tinkaton,Fairy,Steel,85,75,77,70,105,94
+960,Wiglett,Water,,10,55,25,35,25,95
+961,Wugtrio,Water,,35,100,50,50,70,120
+962,Bombirdier,Flying,Dark,70,103,85,60,85,82
+963,Finizen,Water,,70,45,40,45,40,75
+964,Palafin,Water,,100,70,72,53,62,100
+965,Varoom,Steel,Poison,45,70,63,30,45,47
+966,Revavroom,Steel,Poison,80,119,90,54,67,90
+967,Cyclizar,Dragon,Normal,70,95,65,85,65,121
+968,Orthworm,Steel,,70,85,145,60,55,65
+969,Glimmet,Rock,Poison,48,35,42,105,60,60
+970,Glimmora,Rock,Poison,83,55,90,130,81,86
+971,Greavard,Ghost,,50,61,60,30,55,34
+972,Houndstone,Ghost,,72,101,100,50,97,68
+973,Flamigo,Flying,Fighting,82,115,74,75,64,90
+974,Cetoddle,Ice,,108,68,45,30,40,43
+975,Cetitan,Ice,,170,113,65,45,55,73
+976,Veluza,Water,Psychic,90,102,73,78,65,70
+977,Dondozo,Water,,150,100,115,65,65,35
+978,Tatsugiri,Dragon,Water,68,50,60,120,95,82
+979,Annihilape,Fighting,Ghost,110,115,80,50,90,90
+980,Clodsire,Poison,Ground,130,75,60,45,100,20
+981,Farigiraf,Normal,Psychic,120,90,70,110,70,60
+982,Dudunsparce,Normal,,125,100,80,85,75,55
+983,Kingambit,Dark,Steel,100,135,120,60,85,50
+984,Great Tusk,Ground,Fighting,115,131,131,53,53,87
+985,Scream Tail,Fairy,Psychic,115,65,99,65,115,111
+986,Brute Bonnet,Grass,Dark,111,127,99,79,99,55
+987,Flutter Mane,Ghost,Fairy,55,55,55,135,135,135
+988,Slither Wing,Bug,Fighting,85,135,79,85,105,81
+989,Sandy Shocks,Electric,Ground,85,81,97,121,85,101
+990,Iron Treads,Ground,Steel,90,112,120,72,70,106
+991,Iron Bundle,Ice,Water,56,80,114,124,60,136
+992,Iron Hands,Fighting,Electric,154,140,108,50,68,50
+993,Iron Jugulis,Dark,Flying,94,80,86,122,80,108
+994,Iron Moth,Fire,Poison,80,70,60,140,110,110
+995,Iron Thorns,Rock,Electric,100,134,110,70,84,72
+996,Frigibax,Dragon,Ice,65,75,45,35,45,55
+997,Arctibax,Dragon,Ice,90,95,66,45,65,62
+998,Baxcalibur,Dragon,Ice,115,145,92,75,86,87
+999,Gimmighoul,Ghost,,45,30,70,75,70,10
+1000,Gholdengo,Steel,Ghost,87,60,95,133,91,84
+1001,Wo-Chien,Dark,Grass,85,85,100,95,135,70
+1002,Chien-Pao,Dark,Ice,80,120,80,90,65,135
+1003,Ting-Lu,Dark,Ground,155,110,125,55,80,45
+1004,Chi-Yu,Dark,Fire,55,80,80,135,120,100
+1005,Roaring Moon,Dragon,Dark,105,139,71,55,101,119
+1006,Iron Valiant,Fairy,Fighting,74,130,90,120,60,116
+1007,Koraidon,Fighting,Dragon,100,135,115,85,100,135
+1008,Miraidon,Electric,Dragon,100,85,100,135,115,135
+1009,Walking Wake,Water,Dragon,99,83,91,125,83,109
+1010,Iron Leaves,Grass,Psychic,90,130,88,70,108,104
+1011,Dipplin,Grass,Dragon,80,80,110,95,80,40
+1012,Poltchageist,Grass,Ghost,40,45,45,74,54,50
+1013,Sinistcha,Grass,Ghost,71,60,106,121,80,70
+1014,Okidogi,Poison,Fighting,88,128,115,58,86,80
+1015,Munkidori,Poison,Psychic,88,75,66,130,90,106
+1016,Fezandipiti,Poison,Fairy,88,91,82,70,125,99
+1017,Ogerpon,Grass,,80,120,84,60,96,110
+1018,Archaludon,Steel,Dragon,90,105,130,125,65,85
+1019,Hydrapple,Grass,Dragon,106,80,110,120,80,44
+1020,Gouging Fire,Fire,Dragon,105,115,121,65,93,91
+1021,Raging Bolt,Electric,Dragon,125,73,91,137,89,75
+1022,Iron Boulder,Rock,Psychic,90,120,80,68,108,124
+1023,Iron Crown,Steel,Psychic,90,72,100,122,108,98
+1024,Terapagos,Normal,,90,65,85,65,85,60
+1025,Pecharunt,Poison,Ghost,88,88,160,88,88,88

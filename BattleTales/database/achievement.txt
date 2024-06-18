@@ -1,0 +1,11 @@
+achievement,desc
+FULL PARTY,Have 6 pokemon in your party
+EVOLUTION,Evolve a pokemon
+RIVAL,Defeat your rival for the first time
+RIVAL 3,Defeat your rival for the third mandatory time
+HOME AWAY FROM HOME,Enter and Make a Secret Base.
+BATTLE FRONTIER,Arrive at the Battle Frontier
+GROUDON,Catch Groudon in Terra Cave
+KYOGRE,Catch Kyogre in Marine Cave
+RAYQUAZA,Catch Rayquaza
+REGIROCK,Catch Regirock
