@@ -1,0 +1,65 @@
+Number,Name,Type 1,Type 2,HP,Attack,Defense,Sp.Attack,Sp.Defense,Speed
+035,Clefairy,Fairy,None,70,45,48,60,65,35
+036,Clefable,Fairy,None,95,70,73,95,90,60
+039,Jigglypuff,Normal,Fairy,115,45,20,45,25,20
+040,Wigglytuff,Normal,Fairy,140,70,45,85,50,45
+122,Mr. Mime,Psychic,Fairy,40,45,65,100,120,90
+173,Cleffa,Fairy,None,50,25,28,45,55,15
+174,Igglybuff,Normal,Fairy,90,30,15,40,20,15
+175,Togepi,Fairy,None,35,20,65,40,65,20
+176,Togetic,Fairy,Flying,55,40,85,80,105,40
+183,Marill,Water,Fairy,70,20,50,20,50,40
+184,Azumarill,Water,Fairy,100,50,80,60,80,50
+209,Snubbull,Fairy,None,60,80,50,40,40,30
+210,Granbull,Fairy,None,90,120,75,60,60,45
+280,Ralts,Psychic,Fairy,28,25,25,45,35,40
+281,Kirlia,Psychic,Fairy,38,35,35,65,55,50
+282,Gardevoir,Psychic,Fairy,68,65,65,125,115,80
+298,Azurill,Normal,Fairy,50,20,40,20,40,20
+303,Mawile,Steel,Fairy,50,85,85,55,55,50
+439,Mime Jr.,Psychic,Fairy,20,25,45,70,90,60
+468,Togekiss,Fairy,Flying,85,50,95,120,115,80
+546,Cottonee,Grass,Fairy,40,27,60,37,50,66
+547,Whimsicott,Grass,Fairy,60,67,85,77,75,116
+669,Flabébé,Fairy,None,44,38,39,61,79,42
+670,Floette,Fairy,None,54,45,47,75,98,52
+671,Florges,Fairy,None,78,65,68,112,154,75
+682,Spritzee,Fairy,None,78,52,60,63,65,23
+683,Aromatisse,Fairy,None,101,72,72,99,89,29
+684,Swirlix,Fairy,None,62,48,66,59,57,49
+685,Slurpuff,Fairy,None,82,80,86,85,75,72
+700,Sylveon,Fairy,None,95,65,65,110,130,60
+702,Dedenne,Electric,Fairy,67,58,57,81,67,101
+703,Carbink,Rock,Fairy,50,50,150,50,150,50
+707,Klefki,Steel,Fairy,57,80,91,80,87,75
+716,Xerneas,Fairy,None,126,131,95,131,98,99
+719,Diancie,Rock,Fairy,50,100,150,100,150,50
+730,Primarina,Water,Fairy,80,74,74,126,116,60
+742,Cutiefly,Bug,Fairy,40,45,40,55,40,84
+743,Ribombee,Bug,Fairy,60,55,60,95,70,124
+755,Morelull,Grass,Fairy,40,35,55,65,75,15
+756,Shiinotic,Grass,Fairy,60,45,80,90,100,30
+764,Comfey,Fairy,None,51,52,90,82,110,100
+778,Mimikyu,Ghost,Fairy,55,90,80,50,105,96
+785,Tapu Koko,Electric,Fairy,70,115,85,95,75,130
+786,Tapu Lele,Psychic,Fairy,70,85,75,130,115,95
+787,Tapu Bulu,Grass,Fairy,70,130,115,85,95,75
+788,Tapu Fini,Water,Fairy,70,75,115,95,130,85
+801,Magearna,Steel,Fairy,80,95,115,130,115,65
+858,Hatterene,Psychic,Fairy,57,90,95,136,103,29
+859,Impidimp,Dark,Fairy,45,45,30,55,40,50
+860,Morgrem,Dark,Fairy,65,60,45,75,55,70
+861,Grimmsnarl,Dark,Fairy,95,120,65,95,75,60
+868,Milcery,Fairy,None,45,40,40,50,61,34
+869,Alcremie,Fairy,None,65,60,75,110,121,64
+888,Zacian,Fairy,None,92,120,115,80,115,138
+905,Enamorus,Fairy,Flying,74,115,70,135,80,106
+926,Fidough,Fairy,None,37,55,70,30,55,65
+927,Dachsbun,Fairy,None,57,80,115,50,80,95
+957,Tinkatink,Fairy,Steel,50,45,45,35,64,58
+958,Tinkatuff,Fairy,Steel,65,55,55,45,82,78
+959,Tinkaton,Fairy,Steel,85,75,77,70,105,94
+985,Scream Tail,Fairy,Psychic,115,65,99,65,115,111
+987,Flutter Mane,Ghost,Fairy,55,55,55,135,135,135
+1006,Iron Valiant,Fairy,Fighting,74,130,90,120,60,116
+1016,Fezandipiti,Poison,Fairy,88,91,82,70,125,99

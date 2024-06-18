@@ -1,0 +1,103 @@
+Number,Name,Type 1,Type 2,HP,Attack,Defense,Sp.Attack,Sp.Defense,Speed
+063,Abra,Psychic,None,25,20,15,105,55,90
+064,Kadabra,Psychic,None,40,35,30,120,70,105
+065,Alakazam,Psychic,None,55,50,45,135,95,120
+079,Slowpoke,Water,Psychic,90,65,65,40,40,15
+080,Slowbro,Water,Psychic,95,75,110,100,80,30
+096,Drowzee,Psychic,None,60,48,45,43,90,42
+097,Hypno,Psychic,None,85,73,70,73,115,67
+102,Exeggcute,Grass,Psychic,60,40,80,60,45,40
+103,Exeggutor,Grass,Psychic,95,95,85,125,75,55
+121,Starmie,Water,Psychic,60,75,85,100,85,115
+122,Mr. Mime,Psychic,Fairy,40,45,65,100,120,90
+124,Jynx,Ice,Psychic,65,50,35,115,95,95
+150,Mewtwo,Psychic,None,106,110,90,154,90,130
+151,Mew,Psychic,None,100,100,100,100,100,100
+177,Natu,Psychic,Flying,40,50,45,70,45,70
+178,Xatu,Psychic,Flying,65,75,70,95,70,95
+196,Espeon,Psychic,None,65,65,60,130,95,110
+199,Slowking,Water,Psychic,95,75,80,100,110,30
+201,Unown,Psychic,None,48,72,48,72,48,48
+202,Wobbuffet,Psychic,None,190,33,58,33,58,33
+203,Girafarig,Normal,Psychic,70,80,65,90,65,85
+238,Smoochum,Ice,Psychic,45,30,15,85,65,65
+249,Lugia,Psychic,Flying,106,90,130,90,154,110
+251,Celebi,Psychic,Grass,100,100,100,100,100,100
+280,Ralts,Psychic,Fairy,28,25,25,45,35,40
+281,Kirlia,Psychic,Fairy,38,35,35,65,55,50
+282,Gardevoir,Psychic,Fairy,68,65,65,125,115,80
+307,Meditite,Fighting,Psychic,30,40,55,40,55,60
+308,Medicham,Fighting,Psychic,60,60,75,60,75,80
+325,Spoink,Psychic,None,60,25,35,70,80,60
+326,Grumpig,Psychic,None,80,45,65,90,110,80
+337,Lunatone,Rock,Psychic,90,55,65,95,85,70
+338,Solrock,Rock,Psychic,90,95,85,55,65,70
+343,Baltoy,Ground,Psychic,40,40,55,40,70,55
+344,Claydol,Ground,Psychic,60,70,105,70,120,75
+358,Chimecho,Psychic,None,75,50,80,95,90,65
+360,Wynaut,Psychic,None,95,23,48,23,48,23
+374,Beldum,Steel,Psychic,40,55,80,35,60,30
+375,Metang,Steel,Psychic,60,75,100,55,80,50
+376,Metagross,Steel,Psychic,80,135,130,95,90,70
+380,Latias,Dragon,Psychic,80,80,90,110,130,110
+381,Latios,Dragon,Psychic,80,90,80,130,110,110
+385,Jirachi,Steel,Psychic,100,100,100,100,100,100
+386,Deoxys,Psychic,None,50,150,50,150,50,150
+433,Chingling,Psychic,None,45,30,50,65,50,45
+436,Bronzor,Steel,Psychic,57,24,86,24,86,23
+437,Bronzong,Steel,Psychic,67,89,116,79,116,33
+439,Mime Jr.,Psychic,Fairy,20,25,45,70,90,60
+475,Gallade,Psychic,Fighting,68,125,65,65,115,80
+480,Uxie,Psychic,None,75,75,130,75,130,95
+481,Mesprit,Psychic,None,80,105,105,105,105,80
+482,Azelf,Psychic,None,75,125,70,125,70,115
+488,Cresselia,Psychic,None,120,70,110,75,120,85
+494,Victini,Psychic,Fire,100,100,100,100,100,100
+517,Munna,Psychic,None,76,25,45,67,55,24
+518,Musharna,Psychic,None,116,55,85,107,95,29
+527,Woobat,Psychic,Flying,65,45,43,55,43,72
+528,Swoobat,Psychic,Flying,67,57,55,77,55,114
+561,Sigilyph,Psychic,Flying,72,58,80,103,80,97
+574,Gothita,Psychic,None,45,30,50,55,65,45
+575,Gothorita,Psychic,None,60,45,70,75,85,55
+576,Gothitelle,Psychic,None,70,55,95,95,110,65
+577,Solosis,Psychic,None,45,30,40,105,50,20
+578,Duosion,Psychic,None,65,40,50,125,60,30
+579,Reuniclus,Psychic,None,110,65,75,125,85,30
+605,Elgyem,Psychic,None,55,55,55,85,55,30
+606,Beheeyem,Psychic,None,75,75,75,125,95,40
+648,Meloetta,Normal,Psychic,100,77,77,128,128,90
+655,Delphox,Fire,Psychic,75,69,72,114,100,104
+677,Espurr,Psychic,None,62,48,54,63,60,68
+678,Meowstic,Psychic,None,74,48,76,83,81,104
+686,Inkay,Dark,Psychic,53,54,53,37,46,45
+687,Malamar,Dark,Psychic,86,92,88,68,75,73
+720,Hoopa,Psychic,Ghost,80,110,60,150,130,70
+765,Oranguru,Normal,Psychic,90,60,80,90,110,60
+779,Bruxish,Water,Psychic,68,105,70,70,70,92
+786,Tapu Lele,Psychic,Fairy,70,85,75,130,115,95
+789,Cosmog,Psychic,None,43,29,31,29,31,37
+790,Cosmoem,Psychic,None,43,29,131,29,131,37
+791,Solgaleo,Psychic,Steel,137,137,107,113,89,97
+792,Lunala,Psychic,Ghost,137,113,89,137,107,97
+800,Necrozma,Psychic,None,97,107,101,127,89,79
+825,Dottler,Bug,Psychic,50,35,80,50,90,30
+826,Orbeetle,Bug,Psychic,60,45,110,80,120,90
+856,Hatenna,Psychic,None,42,30,45,56,53,39
+857,Hattrem,Psychic,None,57,40,65,86,73,49
+858,Hatterene,Psychic,Fairy,57,90,95,136,103,29
+866,Mr. Rime,Ice,Psychic,80,85,75,110,100,70
+876,Indeedee,Psychic,Normal,60,65,55,105,95,95
+898,Calyrex,Psychic,Grass,100,80,80,80,80,80
+899,Wyrdeer,Normal,Psychic,103,105,72,105,75,65
+936,Armarouge,Fire,Psychic,85,60,100,125,80,75
+954,Rabsca,Bug,Psychic,75,50,85,115,100,45
+955,Flittle,Psychic,None,30,35,30,55,30,75
+956,Espathra,Psychic,None,95,60,60,101,60,105
+976,Veluza,Water,Psychic,90,102,73,78,65,70
+981,Farigiraf,Normal,Psychic,120,90,70,110,70,60
+985,Scream Tail,Fairy,Psychic,115,65,99,65,115,111
+1010,Iron Leaves,Grass,Psychic,90,130,88,70,108,104
+1015,Munkidori,Poison,Psychic,88,75,66,130,90,106
+1022,Iron Boulder,Rock,Psychic,90,120,80,68,108,124
+1023,Iron Crown,Steel,Psychic,90,72,100,122,108,98

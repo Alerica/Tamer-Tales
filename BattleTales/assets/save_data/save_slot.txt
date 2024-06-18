@@ -1,0 +1,5 @@
+#slot_1
+
+nama,tanggal_update, map, player_x, player_y, iventory
+#slot_2
+#slot_3

@@ -1,0 +1,11 @@
+5
+pokeball
+19
+greatball
+5
+masterball
+1
+health_potion
+18
+quest_item1
+1
