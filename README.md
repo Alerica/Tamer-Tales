@@ -6,7 +6,12 @@ Tamer Tales is a Pokémon-inspired game where players can view a creature databa
 This project is implemented in the C programming language, demonstrating efficient use of data structures and algorithms to mimic the beloved mechanics of Pokémon games.
 
 
+Programs are split into two :
+Battle Tales & Tamer Tales
 
+Battle Tales contain the game
+
+Tamer Tales contains the file processing (Adjency List)
 
 Features
 
