@@ -1,0 +1,6 @@
+1. Go to Tamer Tales Folder
+2. Find & Run Tamer Tales Installer
+3. Copy exe to Battle Tales folder
+4. Go to Battle Tales Folder
+5. Find & Run Battle Tales Installer
+6. Find & Run Battle Tales Runner
