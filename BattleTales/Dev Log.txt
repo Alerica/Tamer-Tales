@@ -1,0 +1,18 @@
+28 May by Alexander Ricky B.
+    Create battle tales
+    Create basic display
+29 May by Alexander Ricky B.
+    Merge Battle Tales & Tamer Tales
+    Add Battle_Tales_UI, allowing to custom text color, and bg-color
+    Add Battle_Tales_Performance, enabling color in cmd
+    Add buffer swap (remove flickering)
+30 May by Rafly Adha Prathama
+    Add music function
+    Add Battle_Tales_PokemonStruct
+    Add wild spawn
+1 June by Rafly Adha Prathama
+    Adjust spawn rate
+    fix buffer swap, now able to display color
+2 June by Alexander Ricky B.
+    fix buffer swap, where the display are sometimes missplaced
+    
