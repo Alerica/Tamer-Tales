@@ -5,6 +5,8 @@
 #include <string.h>
 #include <time.h>
 #include "Battle_Tales_UI.h"
+#include <windows.h>
+#include <mmsystem.h>
 
 #define MAX_LINE_LENGTH 1000
 #define MAX_NAME_LENGTH 50
@@ -53,6 +55,21 @@ typedef struct{
     int quantity;
 } Bag;
 
+struct AdjListNode {
+    int dest;
+    struct AdjListNode* next;
+};
+
+struct AdjList {
+    struct AdjListNode* head;
+};
+
+struct Graph {
+    int V;
+    struct AdjList* array;
+};
+
+
 void searchPokemon(int wildIndex, PokemonBattle *wild);
 int searchMove(moves move[], PokemonBattle *wild);
 void wildPokemon(PokemonBattle *wild);
@@ -83,9 +100,23 @@ int itemEffect(PokemonBattle *inv, Bag bag, PokemonBattle *wild, int i);
 int catchSystem(PokemonBattle *wild, PokemonBattle inv[], int *index, Bag bag[]);
 int catchSystemNavigation(int nav, PokemonBattle *wild, PokemonBattle inv[], int *index, Bag bag[]);
 void catchSystemDisplay(int count, PokemonBattle *wild, PokemonBattle inv[], int *index, Bag bag[]);
+
+int levelUpCatcher(int nav, PokemonBattle *wild, PokemonBattle inv[], int *index, Bag bag[]);
 int updateInventory(PokemonBattle inv[], PokemonBattle *wild, int *index, Bag bag[]);
 
+int expUp(PokemonBattle *wild, PokemonBattle *inv, int index);
+
+struct AdjListNode* newAdjListNode(int dest);
+struct Graph* createGraph(int V);
+void addEdge(struct Graph* graph, int src, int dest); // Connect from source Node to destination Node
+void printGraph(struct Graph* graph); // Display Graph
+void add_edges_from_file(char* file_name, struct Graph* graph);
+void addData(Pokemon pokemons[]);
+int updateBag(Bag bag[], int max_bag);
+
+
 int main(){
+    PlaySound(TEXT("assets\\music\\battle.wav"), NULL, SND_ASYNC | SND_LOOP);
     int max_data;
     int max_bag;
     int index;
@@ -112,13 +143,31 @@ int main(){
             break;
         }
     }
+    updateBag(bag, max_bag);
     return 399;
+}
+
+int updateBag(Bag bag[], int max_bag){
+    FILE *file = fopen("./assets/save_data/slot_1/inventory/items.txt", "w");
+    if (file == NULL) {
+        printf("File not found\n");
+        return 0;
+    }
+    fprintf(file, "%d\n", max_bag);
+    for(int i = 0; i<max_bag; i++){
+        fprintf(file, "%s\n", bag[i].name);
+        fprintf(file, "%d\n", bag[i].quantity);
+    }
+    fclose(file);
+    return 0;
 }
 
 
 void maxHP(PokemonBattle *wild){
     wild->max_hp = (2 * (wild->pokemon.hp + wild->IV) * wild->level)/ 100 + wild->level + 10;
     wild->curr_hp = wild->max_hp;
+    double level = 4 * (wild->level * wild->level * wild->level) / 5;
+    wild->level_up_exp = (int)level;
 }
 
 void searchPokemon(int wildIndex, PokemonBattle *wild){
@@ -133,8 +182,8 @@ void searchPokemon(int wildIndex, PokemonBattle *wild){
 
     int count = 1;
 
+    Pokemon p;
     while (fgets(line, sizeof(line), file)) {
-        Pokemon p;
         char *token;
 
         token = strtok(line, ",");
@@ -246,10 +295,11 @@ void wildPokemon(PokemonBattle *wild){
         for(int i = 0; i<4; i++){
             index = rand() % totalMove;
             wild->moves[i] = move[index];
+            wild->moves[i].curr_pp = wild->moves[i].pp;
         }
         wild->exp = 0;
         wild->level_up_exp = 100;
-        wild->level = rand() % 100 + 1;
+        wild->level = rand() % 30 + 1;
         wild->affinity = 0;
         wild->IV = rand() % 32;
         maxHP(wild);
@@ -333,6 +383,9 @@ int getInventory(PokemonBattle inv[]){
 
         token = strtok(NULL, ",");
         inv[i].affinity = atoi(token);
+
+        double level = 4 * (inv[i].level * inv[i].level * inv[i].level) / 5;
+        inv[i].level_up_exp = (int)level;
         i++;
         if(i == max_data){
             break;
@@ -448,6 +501,7 @@ int menuBattleNavigation(int nav, int max_data, PokemonBattle inv[], PokemonBatt
             while (menu1 !=  5)
             {
                 if(status == 5){
+                    levelUpCatcher(1, wild, inv, index, bag);
                     return 399;
                     break;
                 }
@@ -462,11 +516,16 @@ int menuBattleNavigation(int nav, int max_data, PokemonBattle inv[], PokemonBatt
             break;
         case 2: ;
             // BAG
+            int statusCatch;
             int menu2 = -1;
             while (menu2 !=  10)
             {
                 menu2 = menuInventory(inv, max_data, wild, index, bag);
-                menuInventoryNavigation(menu2, inv, max_data, wild, index, bag);
+                statusCatch = menuInventoryNavigation(menu2, inv, max_data, wild, index, bag);
+                if(statusCatch == 11){
+                    return 399;
+                    break;
+                }
 
             }
             break;
@@ -906,7 +965,7 @@ int menuFightNavigation(int nav, PokemonBattle inv[], PokemonBattle *wild, int i
     int damage;
     int enemyDamage;
     moves skill;
-    moves enemyMove;
+    moves enemyMove; 
     int enemyindex;
     switch (nav) {
         case 1: ;
@@ -923,6 +982,8 @@ int menuFightNavigation(int nav, PokemonBattle inv[], PokemonBattle *wild, int i
                 system("cls");
                 printf("Enemy HP becomes 0\n");
                 printf("You win!\n");
+                expUp(wild, &inv[index], index);
+
                 getch();
                 return 5;
             }
@@ -932,6 +993,7 @@ int menuFightNavigation(int nav, PokemonBattle inv[], PokemonBattle *wild, int i
             hpUpdate(wild, &inv[index], enemyDamage);
             printf("You dealt %d damage to the enemy\n", damage);
             printf("Enemy dealt %d damage to you\n", enemyDamage);
+            getch();
             break;
         case 2: ;
             if(inv[index].moves[0].curr_pp == 0){
@@ -946,6 +1008,7 @@ int menuFightNavigation(int nav, PokemonBattle inv[], PokemonBattle *wild, int i
                 system("cls");
                 printf("Enemy HP becomes 0\n");
                 printf("You win!\n");
+                expUp(wild, &inv[index], index);
                 getch();
                 return 5;
             }
@@ -970,6 +1033,7 @@ int menuFightNavigation(int nav, PokemonBattle inv[], PokemonBattle *wild, int i
                 system("cls");
                 printf("Enemy HP becomes 0\n");
                 printf("You win!\n");
+                expUp(wild, &inv[index], index);
                 getch();
                 return 5;
             }
@@ -992,6 +1056,7 @@ int menuFightNavigation(int nav, PokemonBattle inv[], PokemonBattle *wild, int i
                 system("cls");
                 printf("Enemy HP becomes 0\n");
                 printf("You win!\n");
+                expUp(wild, &inv[index], index);
                 return 5;
             }
             enemyindex = rand() % 4;
@@ -1095,7 +1160,7 @@ void menuFightDisplay(int current, PokemonBattle *wild, PokemonBattle inv[], int
             printf("   %s\n", inv[index].moves[0].name);
             printf("   %s\n", inv[index].moves[1].name);
             printf("   %s\n", inv[index].moves[2].name);
-            printf("  "); colorTextunderline("green", inv[index].moves[3].name);
+            printf("  "); colorTextunderline("green", inv[index].moves[3].name); printf("\n");
             break;
     }
 }
@@ -1408,11 +1473,20 @@ int menuInventory(PokemonBattle inv[], int size, PokemonBattle *wild, int *index
 
 int menuInventoryNavigation(int nav, PokemonBattle inv[], int max_data, PokemonBattle *wild, int *index, Bag bag[]) {
     int status;
+    if(bag[nav].quantity == 0){
+        printf("You don't have any %s left!\n", bag[nav].name);
+        getch();
+        return 0;
+    }
     status = itemEffect(&inv[*index], bag[nav], wild, *index);
     int menuCatch = -1;
     if(status == 999){
         menuCatch = catchSystem(wild, inv, index, bag);
         catchSystemNavigation(menuCatch, wild, inv, index, bag);
+        system("cls");
+        printf("You caught the enemy!\n");
+        bag[nav].quantity--;
+        return 11;
     }
     bag[nav].quantity--;
 }
@@ -1426,16 +1500,21 @@ void menuInventoryDisplay(int current, PokemonBattle inv[], int size, PokemonBat
     printbattle(wild, inv, *index);
     printf("\n");
     printf("================================================================\n");
-    for(int i = 0; i < size; i++){
+    for(int i = 0; i < size-1; i++){
         if(i == atMenu){
-            printf("  "); colorTextunderline("green", bag[i].name); printf("\n");
-        } else {
-            printf("   %s\n", bag[i].name);
+            printf("  "); colorTextunderline("green", bag[i].name); printf("\t\t%d", bag[i].quantity) ; printf("\n");
+        }
+        else if(bag[i].name[0] == '\0'){
+            continue;
+        }
+        else {
+            printf("%s\t\t%d\n", bag[i].name, bag[i].quantity);
         }
     }
 }
 
 int itemEffect(PokemonBattle *inv, Bag bag, PokemonBattle *wild, int i){
+    system("cls");
     if(strcmp(bag.name, "health_potion") == 0){
         inv->curr_hp += 20;
         if(inv->curr_hp >= inv->max_hp){
@@ -1446,8 +1525,9 @@ int itemEffect(PokemonBattle *inv, Bag bag, PokemonBattle *wild, int i){
         }
     } else if(strcmpi(bag.name, "pokeball") == 0){
         int catch_rate = 255 * 3 / 3; // 255
-        int random = rand() % 255; // 0-255
+        int random = rand() % 255; // 0-255 -> chance gagal 1/255
         if(random < catch_rate){
+
             printf("You caught the enemy!\n");
             getch();
             return 999;
@@ -1458,7 +1538,7 @@ int itemEffect(PokemonBattle *inv, Bag bag, PokemonBattle *wild, int i){
         }
     } else if(strcmpi(bag.name, "greatball") == 0){
         int catch_rate = 255 * 3 / 2; // 382
-        int random = rand() % 255; // 
+        int random = rand() % 255; // 0-255
         if(random < catch_rate){
             printf("You caught the enemy!\n");
             getch();
@@ -1522,6 +1602,11 @@ int catchSystemNavigation(int nav, PokemonBattle *wild, PokemonBattle inv[], int
     
 }
 
+int levelUpCatcher(int nav, PokemonBattle *wild, PokemonBattle inv[], int *index, Bag bag[]) {
+    updateInventory(inv, wild, index, bag);
+    
+}
+
 
 void catchSystemDisplay(int count, PokemonBattle *wild, PokemonBattle inv[], int *index, Bag bag[]) {
     int atMenu = count % 6 + 1;
@@ -1544,12 +1629,9 @@ void catchSystemDisplay(int count, PokemonBattle *wild, PokemonBattle inv[], int
 }
 
 int updateInventory(PokemonBattle inv[], PokemonBattle *wild, int *index, Bag bag[]){
-    int max_data = 0;
-    while(inv[max_data].pokemon.name[0] != '\0'){
+    int max_data = 0, maxInvSize = 6;
+    while(inv[max_data].pokemon.name[0] != '\0' && max_data < maxInvSize){
         max_data++;
-        if(max_data == 6){
-            break;
-        }
     }
     FILE *file = fopen("./assets/save_data/slot_1/inventory/pokemons.txt", "w");
     if(file == NULL){
@@ -1559,27 +1641,188 @@ int updateInventory(PokemonBattle inv[], PokemonBattle *wild, int *index, Bag ba
     fprintf(file, "Number,Name,Type 1,Type 2,Level,Exp,IV,HP,Attack,Defense,Sp. Attack,Sp. Defense,Speed,Affinity\n");
     fprintf(file, "%d\n", max_data);
     for(int i = 0; i < max_data; i++){
-        // fprintf(file, "%00d,%s,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s\n", inv[i].pokemon.number, inv[i].pokemon.name, inv[i].pokemon.type1, inv[i].pokemon.type2, inv[i].level, inv[i].exp, inv[i].IV, inv[i].max_hp, inv[i].pokemon.attack, inv[i].pokemon.defense, inv[i].pokemon.sp_attack, inv[i].pokemon.sp_defense, inv[i].pokemon.speed, inv[i].affinity);
-        fprintf(file, "%03d", inv[i].pokemon.number);
-        fprintf(file, ",%s", inv[i].pokemon.name);
-        fprintf(file, ",%s", inv[i].pokemon.type1);
-        fprintf(file, ",%s", inv[i].pokemon.type2);
-        fprintf(file, ",%d", inv[i].level);
-        fprintf(file, ",%d", inv[i].exp);
-        fprintf(file, ",%d", inv[i].IV);
-        fprintf(file, ",%d", inv[i].max_hp);
-        fprintf(file, ",%d", inv[i].pokemon.attack);
-        fprintf(file, ",%d", inv[i].pokemon.defense);
-        fprintf(file, ",%d", inv[i].pokemon.sp_attack);
-        fprintf(file, ",%d", inv[i].pokemon.sp_defense);
-        fprintf(file, ",%d", inv[i].pokemon.speed);
-        fprintf(file, ",%d\n", inv[i].affinity);
+        fprintf(file, "%03d,%s,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n", 
+                inv[i].pokemon.number, inv[i].pokemon.name, inv[i].pokemon.type1, inv[i].pokemon.type2, 
+                inv[i].level, inv[i].exp, inv[i].IV, inv[i].max_hp, inv[i].pokemon.attack, 
+                inv[i].pokemon.defense, inv[i].pokemon.sp_attack, inv[i].pokemon.sp_defense, 
+                inv[i].pokemon.speed, inv[i].affinity);
+    }
+    fclose(file);
+
+    FILE *file2 = fopen("./assets/save_data/slot_1/inventory/movelist.txt", "w");
+    if(file2 == NULL){
+        printf("Error opening file\n");
+        return 0;
+    }
+    for(int i = 0; i < max_data; i++){
+        for(int j = 0; j < 4; j++){
+            fprintf(file2, "%s\n", inv[i].moves[j].name);
+        }
+    }
+    fclose(file2); // Close the second file
+    return 1;
+}
+
+
+
+// Reward System
+int expUp(PokemonBattle *wild, PokemonBattle *inv, int index){
+    PokemonBattle *nextEvo;
+    int evolution = 0;
+    int pokedexNumber = inv->pokemon.number;
+    struct Graph* graph = createGraph(1030);
+    add_edges_from_file("./assets/database/evolution_all.txt", graph);
+    struct AdjListNode* sekarang = graph->array[pokedexNumber].head;
+    if(sekarang != NULL){
+        int next = sekarang->dest + 1;
+        searchPokemon(next, nextEvo);
+        nextEvo->level = inv->level;
+        nextEvo->exp = 0;
+        nextEvo->level_up_exp = 100;
+        nextEvo->level = rand() % 30 + 1;
+        nextEvo->affinity = 0;
+        nextEvo->IV = rand() % 32;
+        maxHP(nextEvo);
+        evolution = 1;
+    }
+    int exp = wild->level * 6;
+    inv->exp += exp;
+    if(inv->exp >= inv->level_up_exp){
+        inv->level++;
+        inv->max_hp *= 1.1;
+        inv->affinity += 2;
+        inv->pokemon.attack += 1;
+        inv->pokemon.defense += 1;
+        inv->pokemon.sp_attack += 1;
+        inv->pokemon.sp_defense += 1;
+        inv->pokemon.speed += 1;
+        inv->exp = 0;
+    }
+    if((inv->level == 16 || inv->level == 32) && evolution == 1){
+        printf("Your pokemon %s is evolving!\n", inv->pokemon.name);
+        printf("Become %s\n", nextEvo->pokemon.name);
+        getch();
+        inv->exp = 0;
+        inv->pokemon.number = nextEvo->pokemon.number;
+        strcpy(inv->pokemon.name, nextEvo->pokemon.name);
+        strcpy(inv->pokemon.type1, nextEvo->pokemon.type1);
+        strcpy(inv->pokemon.type2, nextEvo->pokemon.type2);
+        inv->pokemon.attack = nextEvo->pokemon.attack+inv->level;
+        inv->pokemon.defense = nextEvo->pokemon.defense+inv->level;
+        inv->pokemon.sp_attack = nextEvo->pokemon.sp_attack+inv->level;
+        inv->pokemon.sp_defense = nextEvo->pokemon.sp_defense+inv->level;
+        inv->pokemon.speed = nextEvo->pokemon.speed+inv->level;
+        inv->max_hp = nextEvo->max_hp;
+        inv->level_up_exp = nextEvo->level_up_exp;
+        inv->IV = nextEvo->IV;
+        inv->level++;
+    }
+    printf("You got %d exp!\n", exp);
+}
+
+
+
+
+//GRAPH
+void addData(Pokemon pokemons[]) {
+    FILE *file = fopen("./assets/database/pokedex_all.txt", "r");
+    if (file == NULL) {
+        fprintf(stderr, "Could not open file\n");
+        return;
+    }
+
+    char line[MAX_LINE_LENGTH];
+    fgets(line, sizeof(line), file); 
+
+    int count = 1;
+
+    while (fgets(line, sizeof(line), file)) {
+        Pokemon p;
+        char *token;
+
+        token = strtok(line, ",");
+        p.number = atoi(token);
+
+        token = strtok(NULL, ",");
+        strncpy(p.name, token, MAX_NAME_LENGTH);
+
+        token = strtok(NULL, ",");
+        strncpy(p.type1, token, MAX_TYPE_LENGTH);
+
+        token = strtok(NULL, ",");
+        if (token != NULL && strcmp(token, "\n") != 0) {
+            strncpy(p.type2, token, MAX_TYPE_LENGTH);
+        } else {
+            strcpy(p.type2, "");
+        }
+
+        token = strtok(NULL, ",");
+        p.hp = atoi(token);
+
+        token = strtok(NULL, ",");
+        p.attack = atoi(token);
+
+        token = strtok(NULL, ",");
+        p.defense = atoi(token);
+
+        token = strtok(NULL, ",");
+        p.sp_attack = atoi(token);
+        
+        token = strtok(NULL, ",");
+        p.sp_defense = atoi(token);
+
+        token = strtok(NULL, ",");
+        p.speed = atoi(token);
+
+        pokemons[count++] = p;
+    }
+    fclose(file);
+}
+
+struct AdjListNode* newAdjListNode(int dest) {
+    struct AdjListNode* newNode = (struct AdjListNode*) malloc(sizeof(struct AdjListNode));
+    newNode->dest = dest;
+    newNode->next = NULL;
+    return newNode;
+}
+
+struct Graph* createGraph(int V) {
+    struct Graph* graph = (struct Graph*) malloc(sizeof(struct Graph));
+    graph->V = V;
+
+    graph->array = (struct AdjList*) malloc(V * sizeof(struct AdjList));
+
+    for (int i = 0; i < V; ++i) {
+        graph->array[i].head = NULL;
+    }
+
+    return graph;
+}
+
+void add_edges_from_file(char* file_name, struct Graph* graph) {
+    FILE* file = fopen(file_name, "r");
+    if (file == NULL) {
+        printf("Cannot open file ini\n", file_name);
+        return;
+    }
+
+    int src, dest; //node asal, node tujuan
+    char *token;
+    char line[MAX_LINE_LENGTH];
+    while(fgets(line, sizeof(line), file) != NULL){
+        token = strtok(line, ",");
+        src = atoi(token);
+
+        token = strtok(NULL, ",");
+        dest = atoi(token);
+        addEdge(graph, src, dest);
     }
     fclose(file);
 }
 
 
-// Reward System
-int expUp(PokemonBattle *wild, PokemonBattle inv[], int index){
-    
+void addEdge(struct Graph* graph, int src, int dest) {
+    struct AdjListNode* newNode = newAdjListNode(dest);
+    newNode->next = graph->array[src].head;
+    graph->array[src].head = newNode;
 }
