@@ -32,6 +32,7 @@ Authors
 3.  2702343914 - Rafly Adha Prathama
 
 **JOBDESK**
+
 *Alexander Ricky B.* :
 - Program Definition
 - Flowchart (Battle Tales)
