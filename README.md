@@ -65,3 +65,5 @@ Authors
 - Reward System
 - Evolution system
 - Stats configuration
+
+To install you can follow the guide on "INSTALLATION GUIDE"
